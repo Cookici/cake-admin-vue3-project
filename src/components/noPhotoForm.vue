@@ -165,12 +165,12 @@ defineExpose({
       form.other = label.cakeLabelIcon
     } else if (aType == 'role') {
       const role = t as RoleModel;
-      form.id = role.cakeRoleId;
-      form.name = role.cakeRoleName;
-      form.other = role.cakeRoleDescription;
-      form.level = role.cakeRoleLevel;
+      form.id = role.cakeRoleId
+      form.name = role.cakeRoleName
+      form.other = role.cakeRoleDescription
+      form.level = role.cakeRoleLevel
     } else if (aType == 'permit') {
-      const permit = t as PermitModel;
+      const permit = t as PermitModel
       form.id = permit.cakePermitId
       form.name = permit.cakePermitName
       form.other = permit.cakePermitDescription
