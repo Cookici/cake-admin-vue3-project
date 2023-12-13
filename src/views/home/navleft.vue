@@ -42,11 +42,11 @@ const handleClose = (key: string, keyPath: string[]) => {
           <span>访问管理</span>
         </template>
         <el-menu-item index="/home/user">用户管理</el-menu-item>
-        <el-menu-item index="2-2">角色管理</el-menu-item>
-        <el-menu-item index="2-3">权限管理</el-menu-item>
+        <el-menu-item index="/home/role">角色管理</el-menu-item>
+        <el-menu-item index="/home/permit">权限管理</el-menu-item>
       </el-sub-menu>
 
-      <el-sub-menu index="3">
+      <el-sub-menu index="3" disabled="disabled">
         <template #title>
           <el-icon>
             <Document/>
@@ -58,7 +58,7 @@ const handleClose = (key: string, keyPath: string[]) => {
       </el-sub-menu>
 
 
-      <el-menu-item index="4">
+      <el-menu-item index="/home/label">
         <el-icon>
           <CollectionTag/>
         </el-icon>

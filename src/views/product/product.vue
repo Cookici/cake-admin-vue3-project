@@ -8,11 +8,14 @@ import {Product} from "@/models/product";
 import {ElMessage, ElMessageBox, ElTable} from "element-plus";
 import {Delete, Plus} from "@element-plus/icons-vue";
 import PhotoForm from "@/components/photoForm.vue";
+import {useRouter} from "vue-router";
+import {statusStore} from "@/stores";
 
 
+const StatusStore = statusStore()
 const {$http} = (getCurrentInstance() as ComponentInternalInstance).appContext.config.globalProperties
-
-const aForm = ref(null)
+const router = useRouter()
+const aForm = ref<InstanceType<typeof PhotoForm>>(null)
 const headHeight = ref<number>(0)
 const productPageSize = ref<number>(0)
 const productList = ref<Product[]>([])
@@ -35,6 +38,7 @@ const getProductList = () => {
     params: $http.adornParams({current: page.current, size: page.size, keyword: search.value}),
   }).then((response: AxiosResponse) => {
     let result: Data<Page<Product>> = response.data
+    console.log(result.data)
     productList.value = result.data.records
     page.pages = result.data.pages
     page.current = result.data.current
@@ -124,11 +128,11 @@ const clearSearch = () => {
 }
 
 const editProduct = (product: Product) => {
-  aForm.value.setDialogVisibleAndForm<Product>('product', product, !aForm.value.getDialogVisible())
+  aForm.value!.setDialogVisibleAndForm<Product>('product', product, !aForm.value!.getDialogVisible())
 }
 
 const addProduct = () => {
-  aForm.value.setDialogVisible("product", !aForm.value.getDialogVisible())
+  aForm.value!.setDialogVisible("product", !aForm.value!.getDialogVisible())
 }
 
 
@@ -139,8 +143,13 @@ const initTableHeight = () => {
   };
 }
 
+const editProductLabel = (product: Product) => {
+  router.push({name: 'ProductLabel', state: {product: JSON.stringify(product)}})
+}
+
 
 onMounted(() => {
+  StatusStore.setStatus(true)
   getProductList()
   initTableHeight()
 })
@@ -165,18 +174,32 @@ onMounted(() => {
           :height="tableHeight"
           :row-style="{height: (tableHeight - headHeight) / productPageSize + 'px'}"
       >
-        <el-table-column type="selection" min-width="4%"/>
-        <el-table-column label="创建时间" min-width="18%">
+        <el-table-column type="selection" min-width="5%"/>
+        <el-table-column label="创建时间" min-width="15%">
           <template #default="scope">{{ scope.row.createTime.substring(0, 10) }}</template>
         </el-table-column>
-        <el-table-column prop="cakeProductPhoto" label="产品图片" min-width="20%">
+        <el-table-column prop="cakeProductPhoto" label="产品图片" min-width="15%">
           <template #default="scope">
             <el-image style="width: 80px" :src="scope.row.cakeProductPhoto" fit="contain"/>
           </template>
         </el-table-column>
-        <el-table-column prop="cakeProductName" label="产品名字" min-width="18%"/>
-        <el-table-column prop="cakeProductPrice" label="产品价格(分)" min-width="18%"/>
-        <el-table-column fixed="right" min-width="22%">
+        <el-table-column prop="cakeProductName" label="产品名字" min-width="15%"/>
+        <el-table-column prop="cakeProductPrice" label="产品价格(分)" min-width="15%"/>
+        <el-table-column label="标签" prop="cakeLabelList" min-width="15%">
+          <template #default="scope" style="height: 100%">
+            <div style="display: flex;flex-wrap: wrap;">
+              <div v-for="(label,index) in scope.row.cakeLabelList" :key="index">
+                <el-button style="width: 100px;margin-top: 5px;margin-bottom:5px " type="warning" round>
+                  <font-awesome-icon :icon="label.cakeLabelIcon" style="margin-right: 10px;"/>
+                  {{
+                    label.cakeLabelName
+                  }}
+                </el-button>
+              </div>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column fixed="right" min-width="20%">
           <template #header>
             <el-input style="width: 65%" v-model="search" size="large" placeholder="输入名称搜索"
                       @keyup.enter="searchByName"/>
@@ -199,6 +222,14 @@ onMounted(() => {
                   @click.prevent="editProduct(scope.row)"
               >
                 编辑
+              </el-button>
+              <el-button
+                  link
+                  type="warning"
+                  size="large"
+                  @click.prevent="editProductLabel(scope.row)"
+              >
+                标签
               </el-button>
             </div>
           </template>

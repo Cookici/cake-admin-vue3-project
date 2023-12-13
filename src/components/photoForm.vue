@@ -17,10 +17,12 @@ const {$http} = (getCurrentInstance() as ComponentInternalInstance).appContext.c
 const disabled = ref<boolean>(false)
 const dialogVisible = ref(false)
 const form = reactive<Form>({
+  other: "",
   id: 0,
   name: '',
   price: 0,
-  photoUrl: ''
+  photoUrl: '',
+  level: 0
 })
 const edit = ref<boolean>(false)
 const emits = defineEmits(['getProductList', 'getItemList']);
@@ -35,21 +37,21 @@ const uploadAndProcessProduct = async () => {
     return;
   }
   if (edit.value === true && !aUpload.value.getChangeStatus()) {
-    await idEditProduct()
+    await idEdit()
     return
   }
   await aUpload.value.uploadComponentToUpload()
   form.photoUrl = await aUpload.value.getPhotoUrl();
   if (edit.value === false) {
-    await isAddProduct()
+    await isAdd()
   } else {
-    await idEditProduct()
+    await idEdit()
   }
   await aUpload.value?.setChangeStatus(false)
 }
 
 
-const isAddProduct = async () => {
+const isAdd = async () => {
   await $http({
     url: `/api/${type.value}/add`,
     method: 'post',
@@ -67,7 +69,7 @@ const isAddProduct = async () => {
     }
   }).catch(() => {
     freshList()
-    ElMessage.error("检查是否添加重复商品")
+    ElMessage.error("检查是否添加重复数据")
   })
 }
 
@@ -80,7 +82,7 @@ const deletePhoto = async (deletePhotoUrl: string) => {
   })
 }
 
-const idEditProduct = async () => {
+const idEdit = async () => {
   let data
   if (!aUpload.value.getChangeStatus()) {
     data = type.value === 'product' ?
@@ -88,7 +90,12 @@ const idEditProduct = async () => {
         {cakeItemId: form.id, cakeItemName: form.name, cakeItemPrice: form.price}
   } else {
     data = type.value === 'product' ?
-        {cakeProductId: form.id, cakeProductName: form.name, cakeProductPrice: form.price, cakeProductPhoto: form.photoUrl} :
+        {
+          cakeProductId: form.id,
+          cakeProductName: form.name,
+          cakeProductPrice: form.price,
+          cakeProductPhoto: form.photoUrl
+        } :
         {cakeItemId: form.id, cakeItemName: form.name, cakeItemPrice: form.price, cakeItemPhoto: form.photoUrl}
   }
 
@@ -110,7 +117,7 @@ const idEditProduct = async () => {
   }).catch(() => {
     finishProcess(form.photoUrl)
     dialogVisible.value = false
-    ElMessage.error("检查修改后商品名是否重复")
+    ElMessage.error("检查修改后数据是否重复")
   })
 }
 
@@ -126,7 +133,7 @@ const freshList = async () => {
 }
 
 const finishProcess = async (deletePhotoUrl: string) => {
-  if (aUpload.value.getChangeStatus() && edit.value === true) {
+  if (aUpload.value.getChangeStatus() === true && edit.value === true) {
     await deletePhoto(deletePhotoUrl);
   }
   await freshList();

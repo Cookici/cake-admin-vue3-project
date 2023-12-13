@@ -80,6 +80,7 @@ const clear = () => {
                 placeholder="登录密码"
                 autocomplete="off"
                 show-password
+                @keydown.enter="login"
             ></el-input>
           </el-form-item>
         </el-form>

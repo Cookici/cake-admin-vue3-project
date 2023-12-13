@@ -11,7 +11,7 @@ import {ElMessage, ElMessageBox, ElTable} from "element-plus";
 
 
 const {$http} = (getCurrentInstance() as ComponentInternalInstance).appContext.config.globalProperties
-const aForm = ref(null)
+const aForm = ref<InstanceType<typeof PhotoForm>>(null)
 const headHeight = ref<number>(0)
 const itemPageSize = ref<number>(0)
 const itemList = ref<Item[]>([])
@@ -26,6 +26,10 @@ const page = reactive<Page<Item>>({
   current: 1,
   total: 0
 })
+import {statusStore} from "@/stores";
+
+
+const StatusStore = statusStore()
 
 const getItemList = async () => {
   await $http({
@@ -61,7 +65,7 @@ const clearSearch = () => {
 }
 
 const editItem = (item: Item) => {
-  aForm.value.setDialogVisibleAndForm<Item>('item', item, !aForm.value.getDialogVisible())
+  aForm.value!.setDialogVisibleAndForm<Item>('item', item, !aForm.value!.getDialogVisible())
 }
 
 
@@ -126,7 +130,7 @@ const deleteItem = (item: Item) => {
   })
 }
 const addItem = () => {
-  aForm.value.setDialogVisible("item", !aForm.value.getDialogVisible())
+  aForm.value!.setDialogVisible("item", !aForm.value!.getDialogVisible())
 }
 
 const handleCurrentChange = (toPage: number) => {
@@ -135,6 +139,7 @@ const handleCurrentChange = (toPage: number) => {
 }
 
 onMounted(() => {
+  StatusStore.setStatus(true)
   getItemList()
   initTableHeight()
 })

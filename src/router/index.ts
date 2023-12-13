@@ -45,6 +45,21 @@ const routes: RouteRecordRaw[] = [
                 name: 'User',
                 component: () => import("@/views/user/user.vue"),
             },
+            {
+                path:'/home/productLabel',
+                name:'ProductLabel',
+                component:()=>import("@/views/product/productLabel.vue")
+            },
+            {
+                path:'/home/userRole',
+                name:'UserRole',
+                component:()=>import("@/views/user/userRole.vue")
+            },
+            {
+                path:'/home/rolePermit',
+                name:'RolePermit',
+                component:()=>import("@/views/role/rolePermit.vue")
+            }
         ]
     },
 ]

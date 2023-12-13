@@ -1,3 +1,5 @@
+import {RoleModel} from "@/models/role";
+
 export interface User {
     cakeUserId: number
     cakeUserUsername: string
@@ -9,4 +11,5 @@ export interface User {
     cakeUserLevel: number
     cakeUserStatus: number
     createTime: Date
+    cakeRole:RoleModel
 }

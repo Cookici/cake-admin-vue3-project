@@ -1,4 +1,4 @@
-export interface Label{
+export interface LabelModel{
     cakeLabelId:number
     cakeLabelName:string
     cakeLabelIcon:string

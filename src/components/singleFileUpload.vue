@@ -109,8 +109,8 @@ const handleExceed: (files: UploadRawFile[]) => void = (files: UploadRawFile[]) 
 }
 
 
-const removeHandler = () => {
-  emit('changeButtonDisabledToTrue')
+const removeHandler = async () => {
+  await emit('changeButtonDisabledToTrue')
 }
 
 
@@ -175,7 +175,7 @@ onMounted(() => {
     </div>
     <template #tip>
       <div class="el-upload__tip">
-        limit 1 file, new file will cover the old file
+        限制一个文件上传，最大为5MB
       </div>
     </template>
   </el-upload>
