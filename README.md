@@ -1,6 +1,6 @@
-# Cake-admin-vu3
+# cake-admin-vue3
 
-Cake-admin-vu3系统前端，一个简单的权限和商品管理系统。有商品管理，权限功能，角色管理以及oss管理功能
+cake-admin-vue3系统前端，一个简单的权限和商品管理系统。有商品管理，权限功能，角色管理以及oss管理功能
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -12,22 +12,22 @@ Cake-admin-vu3系统前端，一个简单的权限和商品管理系统。有商
 <br />
 
 <p align="center">
-  <a href="https://github.com/Cookici/cake-admin-vu3-project/">
+  <a href="https://github.com/Cookici/cake-admin-vue3-project/">
     <img src="./image/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">cake-admin-vu3-project</h3>
+<h3 align="center">cake-admin-vue3-project</h3>
   <p align="center">
-    cake-admin-vu3-project前端系统
+    cake-admin-vue3-project前端系统
     <br />
-    <a href="https://github.com/Cookici/cake-admin-vu3-project"><strong>cake-admin-vu3-project前端项目文档 »</strong></a>
+    <a href="https://github.com/Cookici/cake-admin-vue3-project"><strong>cake-admin-vue3-project前端项目文档 »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Cookici/cake-admin-vu3-project">查看Demo</a>
+    <a href="https://github.com/Cookici/cake-admin-vue3-project">查看Demo</a>
     ·
-    <a href="https://github.com/Cookici/cake-admin-vu3-project/issues">报告Bug</a>
+    <a href="https://github.com/Cookici/cake-admin-vue3-project/issues">报告Bug</a>
     ·
-    <a href="https://github.com/Cookici/cake-admin-vu3-project/issues">提出新特性</a>
+    <a href="https://github.com/Cookici/cake-admin-vue3-project/issues">提出新特性</a>
   </p>
 </p>
 
@@ -48,7 +48,7 @@ Cake-admin-vu3系统前端，一个简单的权限和商品管理系统。有商
 - [版本控制](#版本控制)
 - [作者](#作者)
 - [项目参考以及鸣谢](#项目参考以及鸣谢)
-- [cake-admin-vu3-project后端项目](#cake-admin-vu3-project后端项目)
+- [cake-admin-vue3-project后端项目](#cake-admin-vue3-project后端项目)
 - [项目展示](#项目展示)
 
 
@@ -144,7 +144,7 @@ Vue3+Vite+TypeScript
 
 [contributors-url]: https://github.com/Cookici/cake-admin-vue3-project/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/Cookici/cake-admin-vu3e-project.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/Cookici/cake-admin-vue3e-project.svg?style=flat-square
 
 [forks-url]: https://github.com/Cookici/cake-admin-vue3-project/network/members
 
