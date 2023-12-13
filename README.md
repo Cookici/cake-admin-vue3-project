@@ -82,6 +82,7 @@ Vue3+Vite+TypeScript
 
 ### 使用到的框架
 - Vue全家桶
+- Element-plus
 
 
 <br /><br />
@@ -137,22 +138,22 @@ Vue3+Vite+TypeScript
 
 <!-- links -->
 
-[your-project-path]: https://github.com/Cookici/cake-admin-vu3-project/tree/main
+[your-project-path]: https://github.com/Cookici/cake-admin-vue3-project/tree/main
 
-[contributors-shield]: https://img.shields.io/github/contributors/Cookici/cake-admin-vu3-project.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/Cookici/cake-admin-vue3-project.svg?style=flat-square
 
-[contributors-url]: https://github.com/Cookici/cake-admin-vu3-project/graphs/contributors
+[contributors-url]: https://github.com/Cookici/cake-admin-vue3-project/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/Cookici/cake-admin-vu3-project.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/Cookici/cake-admin-vu3e-project.svg?style=flat-square
 
-[forks-url]: https://github.com/Cookici/cake-admin-vu3-project/network/members
+[forks-url]: https://github.com/Cookici/cake-admin-vue3-project/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/Cookici/cake-admin-vu3-project.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/Cookici/cake-admin-vue3-project.svg?style=flat-square
 
-[stars-url]: https://github.com/Cookici/cake-admin-vu3-project/stargazers
+[stars-url]: https://github.com/Cookici/cake-admin-vue3-project/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/Cookici/cake-admin-vu3-project.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/Cookici/cake-admin-vue3-project.svg?style=flat-square
 
-[issues-url]: https://img.shields.io/github/issues/Cookici/cake-admin-vu3-project.svg
+[issues-url]: https://img.shields.io/github/issues/Cookici/cake-admin-vue3-project.svg
 
-[license-shield]: https://img.shields.io/github/license/Cookici/cake-admin-vu3-project.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/Cookici/cake-admin-vue3-project.svg?style=flat-square
