@@ -81,7 +81,7 @@ const changeHandler = (status: number, user: User) => {
   $http({
     url: '/api/user/update',
     method: 'put',
-    data: {cakeUserId: user.cakeUserId, cakeUserStatus: status}
+    data: {cakeUserId: user.cakeUserId, cakeRoleId: user.cakeRole.cakeRoleId, cakeUserStatus: status}
   }).then((response: AxiosResponse) => {
     let result: Data<string> = response.data
     if (result.code === 200) {
