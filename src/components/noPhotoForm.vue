@@ -197,7 +197,7 @@ defineExpose({
       form.other = role.cakeRoleDescription
       form.level = role.cakeRoleLevel
     } else if (aType == 'permit') {
-      const permit = t as PermitModel;
+      const permit = t as PermitModel
       form.id = permit.cakePermitId
       form.name = permit.cakePermitName
       form.other = permit.cakePermitDescription
