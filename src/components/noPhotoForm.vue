@@ -8,6 +8,7 @@ import {Data} from "@/models/data";
 import {ElMessage} from "element-plus";
 import {RoleModel} from "@/models/role";
 import {PermitModel} from "@/models/permit";
+import {validateNameOtherLevel, validateNameOther} from '@/utils/valid'
 
 
 const {$http} = (getCurrentInstance() as ComponentInternalInstance).appContext.config.globalProperties
@@ -40,6 +41,19 @@ const editOrAdd = () => {
 }
 
 const isAdd = async () => {
+  if (type.value != 'role') {
+    if (!validateNameOther(form.name, form.other)) {
+      ElMessage.warning("格式错误")
+      dialogVisible.value = false
+      return;
+    }
+  } else {
+    if (!validateNameOtherLevel(form.name, form.other, form.level)) {
+      ElMessage.warning("格式错误")
+      dialogVisible.value = false
+      return;
+    }
+  }
   await $http({
     url: `/api/${type.value}/add`,
     method: 'post',
@@ -63,6 +77,19 @@ const isAdd = async () => {
 }
 
 const idEdit = async () => {
+  if (type.value != 'role') {
+    if (!validateNameOther(form.name, form.other)) {
+      ElMessage.warning("格式错误")
+      dialogVisible.value = false
+      return;
+    }
+  } else {
+    if (!validateNameOtherLevel(form.name, form.other, form.level)) {
+      ElMessage.warning("格式错误")
+      dialogVisible.value = false
+      return;
+    }
+  }
   await $http({
     url: `/api/${type.value}/edit`,
     method: 'put',

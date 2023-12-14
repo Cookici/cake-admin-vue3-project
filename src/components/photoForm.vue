@@ -7,6 +7,7 @@ import {ElMessage, UploadUserFile} from "element-plus";
 import {Form} from "@/models/form";
 import {Product} from "@/models/product";
 import {Item} from "@/models/item";
+import {validateNamePrice} from '@/utils/valid'
 
 const title = ref<string>('')
 const buttonName = ref<string>('')
@@ -52,6 +53,10 @@ const uploadAndProcessProduct = async () => {
 
 
 const isAdd = async () => {
+  if(!validateNamePrice(form.name,form.price)){
+    ElMessage.warning("格式有误")
+    return;
+  }
   await $http({
     url: `/api/${type.value}/add`,
     method: 'post',
@@ -83,6 +88,11 @@ const deletePhoto = async (deletePhotoUrl: string) => {
 }
 
 const idEdit = async () => {
+  if(!validateNamePrice(form.name,form.price)){
+    ElMessage.warning("格式有误")
+    dialogVisible.value = false
+    return;
+  }
   let data
   if (!aUpload.value.getChangeStatus()) {
     data = type.value === 'product' ?

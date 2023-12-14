@@ -7,6 +7,7 @@ import {tokenStore} from "@/stores/modules/token";
 import {userStore} from "@/stores/modules/user"
 import {User} from "@/models/user";
 import {useRouter} from "vue-router";
+import {validateLogin} from '@/utils/valid'
 
 
 const TokenStore = tokenStore()
@@ -17,6 +18,11 @@ const username = ref('');
 const password = ref('');
 
 const login = async () => {
+  if(!validateLogin(username.value,password.value)){
+    ElMessage.warning("输入格式有误")
+    return;
+  }
+
   await axios({
     method: 'post',
     url: "http://localhost:9000/login",
@@ -58,7 +64,7 @@ const clear = () => {
   <div class="login-container">
     <!-- box容器放置图片 -->
     <div class="img-box">
-      <img src="https://lrh-blog-project.oss-cn-beijing.aliyuncs.com/default.jpg" alt="Image Description" />
+      <img src="https://lrh-blog-project.oss-cn-beijing.aliyuncs.com/default.jpg" alt="Image Description"/>
     </div>
     <div class="login-info">
       <!-- box1容器把登录表单和按钮放在同一容器中，便于整体改变他们的位置 -->
@@ -122,7 +128,8 @@ const clear = () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(253,253,253);
+    background-color: rgb(253, 253, 253);
+
     .title {
       font-size: 23px;
       font-weight: 600;
@@ -131,6 +138,7 @@ const clear = () => {
 
     .el-form-item {
       padding: 5px;
+
       .el-input {
         width: 280px;
       }

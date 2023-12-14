@@ -9,3 +9,4 @@ declare module '*.vue' {
 declare module "@/utils/http.js"
 declare module '@/utils/policy.js'
 declare module "uuid"
+declare module '@/utils/valid.js'
